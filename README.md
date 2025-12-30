@@ -1,147 +1,73 @@
-#Project Archived
+個人財務管理系統 (Personal Finance System)
+此專案為一個使用 Python + Streamlit 開發的個人財務管理系統，旨在提供使用者一個私密、安全且具備視覺化分析功能的理財工具。
 
-此專案為一個使用 Python + Streamlit 開發的個人財務管理系統，主要作為學習與原型驗證用途。
-目前已由更新的系統架構與實作方式取代，因此不再進行功能開發與維護。
+專案亮點（Key Features）
+本系統完全符合「程式設計概念與方法」專案需求，包含以下核心功能：
 
-專案仍可正常執行，並適合作為以下用途的參考範例：
+使用者驗證系統：實作帳號註冊與登入功能，使用 SHA-256 加密技術確保使用者密碼安全。
 
-Streamlit 介面設計
+收支分類管理：允許使用者輸入每日收支，並提供預設類別（食、衣、住、行、育、樂、薪資、獎助金等）。
 
-使用 st.session_state 管理狀態
+資料持久化儲存：使用 SQLite 資料庫 儲存交易紀錄與個人設定，即使關閉網頁或重啟程式，資料也不會遺失。
 
-基本財務資料分析與視覺化
+財務目標追蹤：使用者可設定每月儲蓄目標，系統會自動計算目前進度並以進度條（Progress Bar）呈現。
 
-Plotly 圖表整合
+視覺化報表：
 
-專案說明（Description）
+圓餅圖：分析各類別支出佔比。
 
-本系統為一套簡易的 個人財務管理系統，提供使用者記錄收入與支出、分析消費結構，並追蹤每月儲蓄目標。
+互動式長條圖：追蹤每日收支趨勢。
 
-主要功能包含：
+智慧分析與建議：系統會根據使用者的收支比率，自動給予財務狀況評估與消費建議。
 
-收入 / 支出資料輸入
+技術棧（Tech Stack）
+Language: Python 3.9+
 
-支出類別分析
+Web Framework: Streamlit
 
-圓餅圖視覺化支出比例
+Data Processing: Pandas
 
-每月儲蓄目標設定與進度追蹤
+Visualization: Plotly Express
 
-本專案採用 記憶體暫存資料（st.session_state），不使用資料庫，適合課堂作業與展示用途。
+Database: SQLite (內建於 Python)
 
-相關連結（Links）
+Security: Hashlib (SHA-256 加密)
 
-Streamlit 官方文件
-https://docs.streamlit.io/
+安裝與啟動指南
+Windows 環境
+安裝 Python: 確保已安裝 Python 並勾選 Add Python to PATH。
 
-Plotly Express 官方文件
-https://plotly.com/python/plotly-express/
+建立虛擬環境:
 
-Pandas 官方文件
-https://pandas.pydata.org/docs/
+PowerShell
 
-Linux / macOS 安裝方式
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+安裝套件:
 
-請先確認已安裝 Python 3.9 以上版本。
-
-安裝必要套件：
-
-pip install streamlit pandas plotly
-
-
-進入專案目錄後執行：
-
-streamlit run app.py
-
-Windows 安裝方式
-
-至官方網站下載並安裝 Python
-https://www.python.org/downloads/
-
-（安裝時請務必勾選 Add Python to PATH）
-
-開啟「命令提示字元（CMD）」
-
-安裝套件：
+PowerShell
 
 pip install streamlit pandas plotly
+啟動系統:
 
+PowerShell
 
-啟動系統：
+streamlit run main.py
+資料庫結構說明 (Database Schema)
+本專案包含三個核心資料表：
 
-streamlit run app.py
+users: 儲存使用者帳號與加密密碼。
 
-系統啟動方式（How to Launch）
+transactions: 儲存每筆收入與支出的詳細資料。
 
-在專案目錄中輸入：
-
-streamlit run app.py
-
-
-啟動後瀏覽器會自動開啟：
-
-http://localhost:8501/
-
-資料儲存說明（Data Storage）
-
-本專案使用 st.session_state 進行資料暫存。
-
-注意事項：
-
-重新整理頁面後資料將會遺失
-
-不需設定資料庫
-
-適合展示、學習與短期測試
-
-建議未來可擴充為：
-
-SQLite
-
-CSV 檔案儲存
-
-MongoDB / Firebase
-
-相依套件（Dependencies）
-
-https://www.python.org/
- — 主要程式語言
-
-https://pypi.org/project/streamlit/
- — Web 介面框架
-
-https://pypi.org/project/pandas/
- — 資料處理
-
-https://pypi.org/project/plotly/
- — 資料視覺化
-
-https://docs.python.org/3/library/datetime.html
- — 日期時間處理
+goals: 儲存每個使用者設定的每月儲蓄目標。
 
 版本紀錄（Changelog）
-0.3.0
+v1.0.0 (當前版本)
+完成 SQLite 資料庫串接，支援多使用者資料隔離。
 
-新增每月儲蓄目標設定
+實作 Plotly 互動式圖表。
 
-新增目標達成進度條
+修正進度條數值超出範圍導致的錯誤 (Clamping logic)。
 
-新增依消費狀況給予建議提示
-
-0.2.0
-
-新增支出類別圓餅圖
-
-新增收入與支出總覽指標
-
-改善介面配置與分頁結構
-
-0.1.0
-
-初始版本
-
-基本收支輸入功能
-
-使用 Session State 管理資料
-
-Streamlit 多分頁介面
+新增登入登出邏輯。
